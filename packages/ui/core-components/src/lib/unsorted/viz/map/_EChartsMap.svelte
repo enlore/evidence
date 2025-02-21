@@ -29,6 +29,9 @@
 
 	export let hasLink = false;
 
+	export let specialAreas = undefined
+	export let geoJson = undefined
+
 	export let echartsOptions = undefined;
 	export let seriesOptions = undefined;
 	export let printEchartsConfig = false;
@@ -79,6 +82,8 @@
 				display: {copying ? 'none' : 'inherit'}
 			"
 				use:echartsMap={{
+					specialAreas,
+					geoJson,
 					config,
 					hasLink,
 					echartsOptions,

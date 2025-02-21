@@ -23,6 +23,9 @@
 	export let data = undefined;
 	export let queryID = undefined;
 
+	export let specialAreas = undefined
+	export let geoJson = undefined
+
 	export let state = undefined;
 	export let value = undefined;
 
@@ -291,6 +294,8 @@
 		{config}
 		{data}
 		{queryID}
+		{specialAreas}
+		{geoJson}
 		{hasLink}
 		{echartsOptions}
 		{seriesOptions}

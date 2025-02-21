@@ -13,6 +13,8 @@
 			}
 		}
 	};
+
+	import usStateMapWithTerritories from "./usStateMapWithTerritories.json"
 </script>
 
 <script>
@@ -42,4 +44,20 @@
 	{@const data = Query.create(`SELECT * from state_sales`, query)}
 	<USMap {data} {...args} state="state" value="sales" abbreviations="false" />
 	<USMap {data} {...args} state="state" value="sales" abbreviations={false} />
+</Story>
+
+<Story name="specialAreas and geoJson" let:args>
+	{@const data = Query.create(`SELECT * from state_sales`, query)}
+	<USMap {data} {...args} state="state" value="sales" geoJson={usStateMapWithTerritories} specialAreas={{
+		Guam: {
+			left: -130,
+			top: 30,
+			width: 5
+		},
+		GU: {
+			left: -130,
+			top: 30,
+			width: 5
+		} 
+	}}/>
 </Story>

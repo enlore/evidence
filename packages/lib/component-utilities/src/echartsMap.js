@@ -2,7 +2,10 @@ import { init, registerMap, connect } from 'echarts';
 import usStateMap from './usStateMap.json';
 
 export default (node, option) => {
-	registerMap('US', usStateMap, {
+	const specialAreas = option.specialAreas
+	const geoJson = option.geoJson
+
+	const defaultSpecialAreas = {
 		Alaska: {
 			left: -128,
 			top: 25,
@@ -25,7 +28,12 @@ export default (node, option) => {
 			top: 26,
 			width: 5
 		}
-	});
+	}
+	
+	const mapGeoJson = geoJson ? geoJson : usStateMap
+	const areas = specialAreas ? specialAreas : defaultSpecialAreas
+
+	registerMap('US', mapGeoJson, areas);
 
 	let hasLink = option.hasLink;
 
