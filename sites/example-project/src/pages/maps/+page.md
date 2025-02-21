@@ -1,4 +1,6 @@
 <script>
+import usMapWithTerritories from './usStateMapWithTerritories.json'
+
 let demoData = [
               { name: 'Alabama', population: 4822023 },
               { name: 'Alaska', population: 731449 },
@@ -51,7 +53,9 @@ let demoData = [
               { name: 'West Virginia', population: 1855413 },
               { name: 'Wisconsin', population: 5726398 },
               { name: 'Wyoming', population: 576412 },
-              { name: 'Puerto Rico', population: 3667084 }
+              { name: 'Puerto Rico', population: 3667084 },
+              { name: 'Guam', population: 166506 },
+              { name: 'United States Virgin Islands', population: 104917 },
             ]
 </script>
 
@@ -111,6 +115,60 @@ discede?
     subtitle="Texas leading in sales"
     legend=true
     fmt=usd
+/>
+
+Map with custom geoJson and specialAreas.
+
+<USMap
+    data={demoData}
+    geoJson={usMapWithTerritories}
+    specialAreas={{ 
+        "District of Columbia": {
+            left: -72,
+            top: 36,
+            width: 3
+        },
+        DC: {
+            left: -72,
+            top: 36,
+            width: 3
+        },
+        Guam: {
+			left: -130,
+			top: 30,
+			width: 5
+		}, 
+        GU: {
+			left: -130,
+			top: 30,
+			width: 5
+		},
+        'Puerto Rico': {
+            left: -78,
+            top: 28,
+            width: 7
+        },
+        PR: {
+            left: -78,
+            top: 28,
+            width: 7
+        },
+        'United States Virgin Islands': {
+            left: -70,
+            top: 26,
+            width: 5
+        },
+        VI: {
+            left: -70,
+            top: 26,
+            width: 5
+        }
+    }}
+    state=name
+    value=population
+    colorScale=orange
+    title="US and Territories"
+    subtitle="DC, Guam, Puerto Rico, the US Virgin Islands"
 />
 
 Lorem markdownum nivea redimitus. In rector in, flumine adimunt, cinctum, dolore
