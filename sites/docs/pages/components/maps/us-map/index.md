@@ -207,7 +207,135 @@ Compare a metric across US states using a flat choropleth map. For other regions
 ```
 </DocTab>
 
+### Custom GeoJSON
 
+The USMap component can render additional regions if you provide custom GeoJSON. Pass an object on the `specialAreas` prop to customize the location and size of features in your GeoJSON.
+
+<script>
+    import usMapWithTerritories from './usStateMapWithTerritories.json'
+</script>
+
+<DocTab>
+    <div slot='preview'>
+        <USMap
+            data={state_population}
+            geoJson={usMapWithTerritories}
+            specialAreas={{
+                AK: {
+                    left: -130,
+                    top: 22,
+                    width: 12,
+                    height: 7
+                },
+                Alaska: {
+                    left: -130,
+                    top: 22,
+                    width: 12,
+                    height: 7
+                },
+                "District of Columbia": {
+                    left: -72,
+                    top: 36,
+                    width: 3
+                },
+                DC: {
+                    left: -72,
+                    top: 36,
+                    width: 3
+                },
+                Guam: {
+                    left: -130,
+                    top: 30,
+                    width: 5
+                }, 
+                GU: {
+                    left: -130,
+                    top: 30,
+                    width: 5
+                },
+                'Puerto Rico': {
+                    left: -78,
+                    top: 28,
+                    width: 7
+                },
+                PR: {
+                    left: -78,
+                    top: 28,
+                    width: 7
+                },
+                'United States Virgin Islands': {
+                    left: -70,
+                    top: 26,
+                    width: 5
+                },
+                VI: {
+                    left: -70,
+                    top: 26,
+                    width: 5
+                }
+            }}
+            state=state_name
+            value=population
+            colorScale=orange
+            title="US and Territories"
+            subtitle="DC, Guam, Puerto Rico, the US Virgin Islands"
+        />
+    </div>
+
+```html
+<USMap
+    data={demoData}
+    geoJson={usMapWithTerritories}
+    specialAreas={{ 
+        "District of Columbia": {
+            left: -72,
+            top: 36,
+            width: 3
+        },
+        DC: {
+            left: -72,
+            top: 36,
+            width: 3
+        },
+        Guam: {
+            left: -130,
+            top: 30,
+            width: 5
+        }, 
+        GU: {
+            left: -130,
+            top: 30,
+            width: 5
+        },
+        'Puerto Rico': {
+            left: -78,
+            top: 28,
+            width: 7
+        },
+        PR: {
+            left: -78,
+            top: 28,
+            width: 7
+        },
+        'United States Virgin Islands': {
+            left: -70,
+            top: 26,
+            width: 5
+        },
+        VI: {
+            left: -70,
+            top: 26,
+            width: 5
+        }
+    }}
+    state=name
+    value=population
+    colorScale=orange
+    title="US and Territories"
+    subtitle="DC, Guam, Puerto Rico, the US Virgin Islands"
+/>
+```
+</DocTab>
 
 ## Options
 
@@ -248,6 +376,11 @@ If true, map will look for two letter abbreviations rather than full names
 
 Column to be used as the value determining the colour of each state
 
+</PropListing>
+<PropListing
+    name="geoJson"
+>
+    Custom GeoJSON object, must be of type `FeatureCollection`.
 </PropListing>
 <PropListing
     name="colorScale"
